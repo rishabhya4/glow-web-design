@@ -10,8 +10,22 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src="/intro.mp4" type="video/mp4" />
+      </video>
+
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/50" />
+
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 bg-gradient-radial opacity-60" />
+      <div className="absolute inset-0 bg-gradient-radial opacity-30" />
 
       {/* Floating Shapes */}
       <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
