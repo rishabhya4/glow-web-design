@@ -5,31 +5,31 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     id: 1,
-    content: "NexusLab transformed our entire digital presence. Their strategic approach to our website redesign resulted in a 150% increase in conversions. The team's attention to detail and commitment to our success was exceptional.",
-    author: "Sarah Mitchell",
-    role: "CEO, TechVentures Inc.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    id: 2,
-    content: "Working with NexusLab was an absolute pleasure. They delivered a brand identity that perfectly captures our company's vision. The creative process was collaborative, and the results exceeded our expectations.",
-    author: "Michael Chen",
-    role: "Founder, GreenScape Solutions",
+    content: "CareChain AI transformed our healthcare operations. GrowOn's system enhanced patient care while cutting admin work by 40%. AI predictive analytics cut medication errors 28% and boosted bed efficiency 35%. A true healthcare transformation.",
+    author: "Parikshit Pandey",
+    role: "Founder",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
   },
   {
+    id: 2,
+    content: "GrowOn's brand logo perfectly captured our identity. The bold design drove a 25% social media boost and instant recognition. More than a symbol – it's become our strategic advantage.",
+    author: "TCET TSDW",
+    role: "College Committee",
+    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop&crop=face",
+  },
+  {
     id: 3,
-    content: "The mobile app NexusLab developed for us has revolutionized how we serve our customers. User engagement increased by 200%, and the intuitive design receives constant praise from our users.",
-    author: "Emily Rodriguez",
-    role: "Product Director, HealthPlus",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    content: "The interactive features GrowOn implemented on our website have revolutionized how we showcase our luxury properties. The attention to user experience details has made a significant impact on our client engagement.",
+    author: "Robert Williams",
+    role: "Principal Broker, Luxury Homes Realty",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
   },
   {
     id: 4,
-    content: "Their SEO and marketing expertise helped us dominate our market. We've seen a 300% increase in organic traffic and our brand visibility has never been stronger. Truly remarkable results.",
-    author: "David Park",
-    role: "Marketing VP, LuxuryHomes Realty",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    content: "GrowOn delivered a website that perfectly aligns with our brand values while providing the technical functionality we needed. Their team was responsive, creative, and truly invested in our success.",
+    author: "Sarah Thompson",
+    role: "COO, Global Finance",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
   },
 ];
 
@@ -58,7 +58,7 @@ export const TestimonialsSection = () => {
   };
 
   return (
-    <section className="section-padding relative overflow-hidden">
+    <section id="testimonials" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
       
@@ -66,13 +66,13 @@ export const TestimonialsSection = () => {
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-            Testimonials
+            Our Clients
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            What Our <span className="text-gradient">Clients Say</span>
+            Trusted by <span className="text-gradient">Leading Brands</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Don't just take our word for it – hear from the businesses we've helped succeed.
+            We've partnered with innovative companies across various industries to deliver exceptional results.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export const TestimonialsSection = () => {
                   <p
                     key={testimonial.id}
                     className={cn(
-                      "absolute text-lg md:text-xl text-foreground leading-relaxed transition-all duration-500",
+                      "absolute text-lg md:text-xl text-foreground leading-relaxed transition-all duration-500 px-4",
                       index === activeIndex
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4 pointer-events-none"
