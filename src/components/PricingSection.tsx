@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { use3DTilt } from "@/hooks/use3DTilt";
 
 const pricingServices = [
   {
@@ -61,46 +62,14 @@ export const PricingSection = () => {
 
         <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Service Cards */}
-          {pricingServices.map((service) => {
-            const isSelected = selectedServices.includes(service.id);
-            return (
-              <div
-                key={service.id}
-                onClick={() => toggleService(service.id)}
-                className={cn(
-                  "relative rounded-2xl p-8 cursor-pointer transition-all duration-300 hover-lift",
-                  isSelected
-                    ? "bg-gradient-to-b from-primary/20 to-card border-2 border-primary"
-                    : "glass-card hover:border-primary/30"
-                )}
-              >
-                {/* Selection Indicator */}
-                <div
-                  className={cn(
-                    "absolute top-4 right-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all",
-                    isSelected
-                      ? "bg-primary border-primary"
-                      : "border-muted-foreground/30"
-                  )}
-                >
-                  {isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
-                </div>
-
-                <h3 className="text-2xl font-bold text-foreground mb-3 pr-8">
-                  {service.name}
-                </h3>
-
-                <p className="text-muted-foreground text-base mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="flex items-baseline gap-2">
-                  <span className="text-muted-foreground text-base">Starting at</span>
-                  <span className="text-3xl font-bold text-primary">${service.basePrice}</span>
-                </div>
-              </div>
-            );
-          })}
+          {pricingServices.map((service) => (
+            <PricingCard
+              key={service.id}
+              service={service}
+              isSelected={selectedServices.includes(service.id)}
+              onToggle={() => toggleService(service.id)}
+            />
+          ))}
         </div>
 
         {/* Estimate Card */}
@@ -132,5 +101,47 @@ export const PricingSection = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const PricingCard = ({ service, isSelected, onToggle }: any) => {
+  const tiltRef = use3DTilt({ maxTilt: 12, scale: 1.03 });
+
+  return (
+    <div
+      ref={tiltRef}
+      onClick={onToggle}
+      className={cn(
+        "relative rounded-2xl p-8 cursor-pointer transition-all duration-300",
+        isSelected
+          ? "bg-gradient-to-b from-primary/20 to-card border-2 border-primary"
+          : "glass-card hover:border-primary/30"
+      )}
+    >
+      {/* Selection Indicator */}
+      <div
+        className={cn(
+          "absolute top-4 right-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all",
+          isSelected
+            ? "bg-primary border-primary"
+            : "border-muted-foreground/30"
+        )}
+      >
+        {isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
+      </div>
+
+      <h3 className="text-2xl font-bold text-foreground mb-3 pr-8">
+        {service.name}
+      </h3>
+
+      <p className="text-muted-foreground text-base mb-6 leading-relaxed">
+        {service.description}
+      </p>
+
+      <div className="flex items-baseline gap-2">
+        <span className="text-muted-foreground text-base">Starting at</span>
+        <span className="text-3xl font-bold text-primary">${service.basePrice}</span>
+      </div>
+    </div>
   );
 };
