@@ -5,10 +5,11 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Home", href: "#home" },
-  { label: "Process", href: "#process" },
+  { label: "WorkFlow", href: "#process" },
   { label: "Projects", href: "#projects" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
+  { label: "USP", href: "#about" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
@@ -36,13 +37,14 @@ export const Header = () => {
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-            <span className="font-syne font-bold text-primary-foreground text-lg">N</span>
-          </div>
-          <span className="font-syne font-bold text-xl text-foreground">
-            Nexus<span className="text-primary">Lab</span>
+        <a href="#home" className="flex items-center gap-1">
+          <span className="font-syne font-bold text-2xl text-foreground">
+            Grow<span className="text-primary">On</span>
           </span>
+          <div className="flex flex-col gap-0.5 ml-0.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+            <div className="w-1.5 h-3 rounded-full bg-primary" />
+          </div>
         </a>
 
         {/* Desktop Navigation */}

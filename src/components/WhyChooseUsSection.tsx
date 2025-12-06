@@ -3,31 +3,31 @@ import { Zap, Users, Award, BarChart3 } from "lucide-react";
 const features = [
   {
     icon: Zap,
-    title: "Lightning Fast Delivery",
-    description: "We prioritize efficiency without compromising quality. Every project delivered on time.",
+    title: "Fast Turnaround",
+    description: "We deliver projects on time, every time, without compromising on quality.",
   },
   {
     icon: Users,
-    title: "Dedicated Expert Team",
-    description: "Our seasoned professionals bring years of expertise to every project we undertake.",
+    title: "Dedicated Team",
+    description: "Our experienced professionals are committed to the success of your project.",
   },
   {
     icon: Award,
-    title: "Premium Quality Standards",
-    description: "We maintain the highest standards in design, development, and customer service.",
+    title: "Premium Quality",
+    description: "We maintain the highest standards in every aspect of our work.",
   },
   {
     icon: BarChart3,
-    title: "Results-Driven Approach",
-    description: "Every decision is backed by data to ensure measurable business outcomes.",
+    title: "Performance Focus",
+    description: "We optimize for speed, reliability, and a seamless user experience.",
   },
 ];
 
 const stats = [
   { value: "98%", label: "Client Satisfaction" },
-  { value: "150+", label: "Projects Completed" },
-  { value: "12+", label: "Years Experience" },
-  { value: "25+", label: "Team Members" },
+  { value: "70+", label: "Projects Completed" },
+  { value: "6", label: "Months Experience" },
+  { value: "7+", label: "Team Members" },
 ];
 
 export const WhyChooseUsSection = () => {
@@ -37,35 +37,34 @@ export const WhyChooseUsSection = () => {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-gradient-radial opacity-40" />
 
       <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div>
-            <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
-              Why Choose Us
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              What Sets Us <span className="text-gradient">Apart</span>
-            </h2>
-            <p className="text-muted-foreground text-lg mb-10">
-              At NexusLab, we're not just service providers – we're your growth partners. 
-              Our commitment to excellence and innovation drives everything we do.
-            </p>
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
+            Why Choose Us
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+            What Sets Us <span className="text-gradient">Apart</span>
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            At GrowOn, we're committed to delivering exceptional results and experiences.
+          </p>
+        </div>
 
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <div
-                  key={feature.title}
-                  className="group p-6 rounded-2xl bg-background/50 border border-border hover:border-primary/30 transition-all duration-300"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left - Features Grid */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <div
+                key={feature.title}
+                className="group p-6 rounded-2xl bg-background/50 border border-border hover:border-primary/30 transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <feature.icon className="w-6 h-6 text-primary" />
                 </div>
-              ))}
-            </div>
+                <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
+                <p className="text-sm text-muted-foreground">{feature.description}</p>
+              </div>
+            ))}
           </div>
 
           {/* Right - Stats Card */}
@@ -86,10 +85,6 @@ export const WhyChooseUsSection = () => {
               />
 
               <div className="relative z-10">
-                <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-                  Our Track Record
-                </h3>
-
                 <div className="grid grid-cols-2 gap-8">
                   {stats.map((stat, index) => (
                     <div key={stat.label} className="text-center">
@@ -99,21 +94,6 @@ export const WhyChooseUsSection = () => {
                       <div className="text-sm text-muted-foreground">{stat.label}</div>
                     </div>
                   ))}
-                </div>
-
-                {/* Decorative Line */}
-                <div className="mt-10 pt-8 border-t border-border">
-                  <p className="text-center text-muted-foreground text-sm">
-                    Trusted by leading brands worldwide
-                  </p>
-                  <div className="flex justify-center items-center gap-8 mt-6 opacity-50">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div
-                        key={i}
-                        className="w-16 h-8 bg-muted-foreground/20 rounded"
-                      />
-                    ))}
-                  </div>
                 </div>
               </div>
             </div>
