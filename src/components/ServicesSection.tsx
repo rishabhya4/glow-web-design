@@ -66,6 +66,7 @@ const services = [
 export const ServicesSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [glowPosition, setGlowPosition] = useState({ x: 0, y: 0 });
   const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, serviceId: number) => {
@@ -84,11 +85,18 @@ export const ServicesSection = () => {
     const rotateY = ((x - centerX) / centerX) * 10; // Max 10 degrees (inverted)
 
     setTilt({ x: rotateX, y: rotateY });
+    
+    // Track glow position (percentage based for consistency)
+    setGlowPosition({ 
+      x: (x / rect.width) * 100, 
+      y: (y / rect.height) * 100 
+    });
   };
 
   const handleMouseLeave = () => {
     setHoveredId(null);
     setTilt({ x: 0, y: 0 });
+    setGlowPosition({ x: 50, y: 50 });
   };
 
   return (
@@ -136,6 +144,25 @@ export const ServicesSection = () => {
                     }
               }
             >
+              {/* Cursor-tracking Glow Effect */}
+              {hoveredId === service.id && (
+                <div
+                  className="absolute pointer-events-none"
+                  style={{
+                    width: "200px",
+                    height: "200px",
+                    borderRadius: "50%",
+                    left: `${glowPosition.x}%`,
+                    top: `${glowPosition.y}%`,
+                    transform: "translate(-50%, -50%)",
+                    background: "radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, hsl(var(--primary) / 0.1) 50%, transparent 70%)",
+                    filter: "blur(40px)",
+                    transition: "all 0.05s ease-out",
+                    zIndex: 1,
+                  }}
+                />
+              )}
+
               {/* Gradient Background on Hover */}
               <div
                 className={cn(
@@ -147,7 +174,7 @@ export const ServicesSection = () => {
               {/* Icon */}
               <div
                 className={cn(
-                  "w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 bg-gradient-to-br",
+                  "w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 bg-gradient-to-br relative z-10",
                   service.color,
                   "opacity-80 group-hover:opacity-100 group-hover:scale-110"
                 )}
@@ -156,12 +183,12 @@ export const ServicesSection = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 relative z-10">
                 {service.title}
               </h3>
 
               {/* Description / Features */}
-              <div className="relative mb-12">
+              <div className="relative mb-12 z-10">
                 <p
                   className={cn(
                     "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
@@ -190,7 +217,7 @@ export const ServicesSection = () => {
               </div>
 
               {/* Arrow Icon - Bottom Right Corner */}
-              <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300 z-10">
                 <ArrowRight className="w-5 h-5 text-primary" />
               </div>
 
