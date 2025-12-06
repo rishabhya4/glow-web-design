@@ -80,7 +80,7 @@ export const Header = () => {
       <div
         className={cn(
           "lg:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border transition-all duration-300 overflow-hidden",
-          isMobileMenuOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          isMobileMenuOpen ? "max-h-[700px] opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <nav className="container-custom py-4 flex flex-col gap-2">
