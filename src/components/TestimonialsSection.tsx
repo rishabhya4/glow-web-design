@@ -5,31 +5,24 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     id: 1,
-    content: "CareChain AI transformed our healthcare operations. GrowOn's system enhanced patient care while cutting admin work by 40%. AI predictive analytics cut medication errors 28% and boosted bed efficiency 35%. A true healthcare transformation.",
-    author: "Parikshit Pandey",
-    role: "Founder",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    content: "GrowOn transformed our digital presence with a modern, responsive website that perfectly represents our network services. The professional design and seamless functionality have significantly improved our client engagement and online visibility.",
+    author: "TejBharat Network",
+    role: "Network Services Provider",
+    avatar: "/tejbharat-screenshot.png",
   },
   {
     id: 2,
-    content: "GrowOn's brand logo perfectly captured our identity. The bold design drove a 25% social media boost and instant recognition. More than a symbol – it's become our strategic advantage.",
-    author: "TCET TSDW",
-    role: "College Committee",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop&crop=face",
+    content: "Working with GrowOn was a game-changer for our business. They created a beautiful, user-friendly platform that our customers love. The attention to detail and dedication to our success was exceptional throughout the entire process.",
+    author: "Wibelly",
+    role: "E-commerce Platform",
+    avatar: "/wibelly-screenshot.png",
   },
   {
     id: 3,
-    content: "The interactive features GrowOn implemented on our website have revolutionized how we showcase our luxury properties. The attention to user experience details has made a significant impact on our client engagement.",
-    author: "Robert Williams",
-    role: "Principal Broker, Luxury Homes Realty",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-  },
-  {
-    id: 4,
-    content: "GrowOn delivered a website that perfectly aligns with our brand values while providing the technical functionality we needed. Their team was responsive, creative, and truly invested in our success.",
-    author: "Sarah Thompson",
-    role: "COO, Global Finance",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+    content: "GrowOn's printing and fabrication website solution exceeded our expectations. The design perfectly showcases our services while maintaining professional aesthetics. Our online inquiries have increased significantly since launch.",
+    author: "AdFilm Works Media",
+    role: "Media Production & Printing",
+    avatar: "/adfilmworks-screenshot.png",
   },
 ];
 
@@ -110,12 +103,12 @@ export const TestimonialsSection = () => {
                       src={testimonial.avatar}
                       alt={testimonial.author}
                       className={cn(
-                        "w-16 h-16 rounded-full object-cover border-2 border-primary transition-all duration-500 absolute top-0 left-1/2 -translate-x-1/2",
+                        "w-20 h-20 rounded-xl object-cover border-2 border-primary transition-all duration-500 absolute top-0 left-1/2 -translate-x-1/2 bg-white p-2",
                         index === activeIndex ? "opacity-100 scale-100" : "opacity-0 scale-75"
                       )}
                     />
                   ))}
-                  <div className="w-16 h-16" /> {/* Placeholder for spacing */}
+                  <div className="w-20 h-20" /> {/* Placeholder for spacing */}
                 </div>
 
                 <div className="h-14 relative w-full">
