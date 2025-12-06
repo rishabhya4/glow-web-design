@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ExternalLink, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ProjectModal } from "@/components/ProjectModal";
-import { use3DTilt } from "@/hooks/use3DTilt";
 
 const categories = ["All", "Web Development", "Branding", "UI/UX", "Full Stack Projects"];
 
@@ -198,7 +197,46 @@ export const ProjectsSection = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} setSelectedProject={setSelectedProject} />
+            <div
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/30 transition-all duration-500 cursor-pointer"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* View Button */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500">
+                    <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                {/* Category Badge */}
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
+                  {project.category}
+                </span>
+
+                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  {project.title}
+                </h3>
+
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  {project.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -210,52 +248,5 @@ export const ProjectsSection = () => {
         project={selectedProject}
       />
     </section>
-  );
-};
-
-const ProjectCard = ({ project, index, setSelectedProject }: any) => {
-  const tiltRef = use3DTilt({ maxTilt: 12, scale: 1.02 });
-
-  return (
-    <div
-      ref={tiltRef}
-      onClick={() => setSelectedProject(project)}
-      className="group relative rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/30 transition-all duration-500 cursor-pointer"
-      style={{ animationDelay: `${index * 0.1}s` }}
-    >
-      {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {/* View Button */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-          <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500">
-            <ArrowUpRight className="w-6 h-6 text-primary-foreground" />
-          </div>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-6">
-        {/* Category Badge */}
-        <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
-          {project.category}
-        </span>
-
-        <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-          {project.title}
-        </h3>
-
-        <p className="text-muted-foreground text-base leading-relaxed">
-          {project.description}
-        </p>
-      </div>
-    </div>
   );
 };

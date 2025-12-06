@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { use3DTilt } from "@/hooks/use3DTilt";
 
 const services = [
   {
@@ -90,90 +89,82 @@ export const ServicesSection = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} hoveredId={hoveredId} setHoveredId={setHoveredId} />
+            <div
+              key={service.id}
+              className="group glass-card p-8 relative overflow-hidden hover-lift cursor-pointer"
+              onMouseEnter={() => setHoveredId(service.id)}
+              onMouseLeave={() => setHoveredId(null)}
+            >
+              {/* Gradient Background on Hover */}
+              <div
+                className={cn(
+                  "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br",
+                  service.color
+                )}
+              />
+
+              {/* Icon */}
+              <div
+                className={cn(
+                  "w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 bg-gradient-to-br",
+                  service.color,
+                  "opacity-80 group-hover:opacity-100 group-hover:scale-110"
+                )}
+              >
+                <service.icon className="w-8 h-8 text-white" />
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                {service.title}
+              </h3>
+
+              {/* Description / Features */}
+              <div className="relative">
+                <p
+                  className={cn(
+                    "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
+                    hoveredId === service.id ? "opacity-0" : "opacity-100"
+                  )}
+                >
+                  {service.shortDesc}
+                </p>
+
+                {/* Features List (shown on hover) */}
+                <ul
+                  className={cn(
+                    "absolute top-0 left-0 space-y-2 transition-opacity duration-300",
+                    hoveredId === service.id
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
+                  )}
+                >
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2 text-base text-muted-foreground">
+                      <Check className="w-4 h-4 text-primary flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Arrow Icon */}
+              <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
+                {/* Learn More */}
+                <ArrowRight className="w-4 h-4" />
+              </div>
+
+              {/* Bottom Gradient Line */}
+              <div
+                className={cn(
+                  "absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 bg-gradient-to-r",
+                  service.color
+                )}
+              />
+            </div>
           ))}
         </div>
       </div>
     </section>
-  );
-};
-
-const ServiceCard = ({ service, hoveredId, setHoveredId }: any) => {
-  const tiltRef = use3DTilt({ maxTilt: 12, scale: 1.03 });
-
-  return (
-    <div
-      ref={tiltRef}
-      className="group glass-card p-8 relative overflow-hidden cursor-pointer"
-      onMouseEnter={() => setHoveredId(service.id)}
-      onMouseLeave={() => setHoveredId(null)}
-    >
-      {/* Gradient Background on Hover */}
-      <div
-        className={cn(
-          "absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br",
-          service.color
-        )}
-      />
-
-      {/* Icon */}
-      <div
-        className={cn(
-          "w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 bg-gradient-to-br",
-          service.color,
-          "opacity-80 group-hover:opacity-100 group-hover:scale-110"
-        )}
-      >
-        <service.icon className="w-8 h-8 text-white" />
-      </div>
-
-      {/* Title */}
-      <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-        {service.title}
-      </h3>
-
-      {/* Description / Features */}
-      <div className="relative">
-        <p
-          className={cn(
-            "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
-            hoveredId === service.id ? "opacity-0" : "opacity-100"
-          )}
-        >
-          {service.shortDesc}
-        </p>
-
-        {/* Features List (shown on hover) */}
-        <ul
-          className={cn(
-            "absolute top-0 left-0 space-y-2 transition-opacity duration-300",
-            hoveredId === service.id
-              ? "opacity-100"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          {service.features.map((feature: string) => (
-            <li key={feature} className="flex items-center gap-2 text-base text-muted-foreground">
-              <Check className="w-4 h-4 text-primary flex-shrink-0" />
-              {feature}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Arrow Icon */}
-      <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
-        {/* Learn More */}
-        <ArrowRight className="w-4 h-4" />
-      </div>
-
-      {/* Bottom Gradient Line */}
-      <div
-        className={cn(
-          "absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 bg-gradient-to-r",
-          service.color
-        )}
-      />
-    </div>
   );
 };
