@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Globe,
   Palette,
@@ -65,6 +65,31 @@ const services = [
 
 export const ServicesSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const cardRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, serviceId: number) => {
+    const card = cardRefs.current[serviceId];
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Calculate tilt angles based on cursor position
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((centerY - y) / centerY) * 10; // Max 10 degrees (inverted)
+    const rotateY = ((x - centerX) / centerX) * 10; // Max 10 degrees (inverted)
+
+    setTilt({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredId(null);
+    setTilt({ x: 0, y: 0 });
+  };
 
   return (
     <section id="services" className="section-padding relative overflow-hidden">
@@ -87,13 +112,29 @@ export const ServicesSection = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: "1200px" }}>
           {services.map((service, index) => (
             <div
+              ref={(el) => {
+                if (el) cardRefs.current[service.id] = el;
+              }}
               key={service.id}
-              className="group glass-card p-8 relative overflow-hidden hover-lift cursor-pointer"
+              className="group service-card-3d glass-card p-8 relative overflow-hidden hover-lift cursor-pointer"
               onMouseEnter={() => setHoveredId(service.id)}
-              onMouseLeave={() => setHoveredId(null)}
+              onMouseMove={(e) => handleMouseMove(e, service.id)}
+              onMouseLeave={handleMouseLeave}
+              style={
+                hoveredId === service.id
+                  ? {
+                      transform: `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) scale(1.02)`,
+                      transition: "box-shadow 0.1s ease-out",
+                      boxShadow: `0 20px 40px hsl(var(--primary) / 0.2), inset 0 0 30px hsl(var(--primary) / 0.1)`,
+                    }
+                  : {
+                      transform: "perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)",
+                      transition: "transform 0.3s ease-out, box-shadow 0.3s ease-out",
+                    }
+              }
             >
               {/* Gradient Background on Hover */}
               <div
@@ -120,7 +161,7 @@ export const ServicesSection = () => {
               </h3>
 
               {/* Description / Features */}
-              <div className="relative">
+              <div className="relative mb-12">
                 <p
                   className={cn(
                     "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
@@ -148,10 +189,9 @@ export const ServicesSection = () => {
                 </ul>
               </div>
 
-              {/* Arrow Icon */}
-              <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
-                {/* Learn More */}
-                <ArrowRight className="w-4 h-4" />
+              {/* Arrow Icon - Bottom Right Corner */}
+              <div className="absolute bottom-8 right-8 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                <ArrowRight className="w-5 h-5 text-primary" />
               </div>
 
               {/* Bottom Gradient Line */}

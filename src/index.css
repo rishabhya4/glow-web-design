@@ -158,6 +158,16 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /* 3D Tilt Effect for Service Cards */
+  .service-card-3d {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .service-card-3d * {
+    transform-style: preserve-3d;
+  }
 }
 
 @keyframes float {
