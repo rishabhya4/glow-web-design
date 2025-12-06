@@ -62,7 +62,7 @@ export const ContactSection = () => {
           <div className="glass-card p-8 md:p-12">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="block text-base font-medium text-foreground mb-2">
                   Name
                 </label>
                 <Input
@@ -77,7 +77,7 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="block text-base font-medium text-foreground mb-2">
                   Email
                 </label>
                 <Input
@@ -93,7 +93,7 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="phone" className="block text-base font-medium text-foreground mb-2">
                   Phone Number
                 </label>
                 <Input
@@ -108,7 +108,7 @@ export const ContactSection = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-base font-medium text-foreground mb-2">
                   Message
                 </label>
                 <Textarea

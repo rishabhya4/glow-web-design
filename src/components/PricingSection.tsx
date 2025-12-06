@@ -86,17 +86,17 @@ export const PricingSection = () => {
                   {isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
                 </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-3 pr-8">
+                <h3 className="text-2xl font-bold text-foreground mb-3 pr-8">
                   {service.name}
                 </h3>
 
-                <p className="text-muted-foreground text-sm mb-6">
+                <p className="text-muted-foreground text-base mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
-                <div className="flex items-baseline gap-1">
-                  <span className="text-muted-foreground text-sm">Starting at</span>
-                  <span className="text-2xl font-bold text-primary">${service.basePrice}</span>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-muted-foreground text-base">Starting at</span>
+                  <span className="text-3xl font-bold text-primary">${service.basePrice}</span>
                 </div>
               </div>
             );
@@ -106,13 +106,13 @@ export const PricingSection = () => {
         {/* Estimate Card */}
         <div className="max-w-md mx-auto mt-12">
           <div className="glass-card p-8 text-center">
-            <h3 className="text-lg font-semibold text-muted-foreground mb-2">
+            <h3 className="text-xl font-semibold text-muted-foreground mb-3">
               {selectedServices.length > 0 ? "Your Estimate" : "Select services to see your estimate"}
             </h3>
-            
-            <div className="text-sm text-muted-foreground mb-4">Total Estimate</div>
-            
-            <div className="text-5xl font-bold text-gradient mb-6">
+
+            <div className="text-base text-muted-foreground mb-4 font-medium">Total Estimate</div>
+
+            <div className="text-6xl font-bold text-gradient mb-6">
               ${totalEstimate}
             </div>
 
@@ -125,7 +125,7 @@ export const PricingSection = () => {
               Request Detailed Quote
             </Button>
 
-            <p className="text-xs text-muted-foreground mt-4">
+            <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
               This is an estimate. Final pricing may vary based on specific project requirements.
             </p>
           </div>

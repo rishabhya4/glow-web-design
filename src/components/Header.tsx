@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { BookingModal } from "@/components/BookingModal";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -17,6 +18,7 @@ const navItems = [
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,14 +39,12 @@ export const Header = () => {
     >
       <div className="container-custom flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-1">
-          <span className="font-syne font-bold text-2xl text-foreground">
-            Grow<span className="text-primary">On</span>
-          </span>
-          <div className="flex flex-col gap-0.5 ml-0.5">
-            <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-            <div className="w-1.5 h-3 rounded-full bg-primary" />
-          </div>
+        <a href="#home" className="flex items-center gap-2">
+          <img
+            src="/logo_no_bg-BnMSOQKw.png"
+            alt="GrowOn Logo"
+            className="h-10 w-auto"
+          />
         </a>
 
         {/* Desktop Navigation */}
@@ -53,7 +53,7 @@ export const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="px-4 py-2 text-base font-medium text-muted-foreground hover:text-foreground transition-colors duration-200"
             >
               {item.label}
             </a>
@@ -62,7 +62,7 @@ export const Header = () => {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Button variant="hero" size="default">
+          <Button variant="hero" size="default" onClick={() => setIsBookingModalOpen(true)}>
             Book A Meeting
           </Button>
         </div>
@@ -88,17 +88,23 @@ export const Header = () => {
             <a
               key={item.label}
               href={item.href}
-              className="px-4 py-3 text-foreground hover:bg-secondary rounded-lg transition-colors"
+              className="px-4 py-3 text-base font-medium text-foreground hover:bg-secondary rounded-lg transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.label}
             </a>
           ))}
-          <Button variant="hero" className="mt-4 w-full">
+          <Button variant="hero" className="mt-4 w-full" onClick={() => setIsBookingModalOpen(true)}>
             Book A Meeting
           </Button>
         </nav>
       </div>
+
+      {/* Booking Modal */}
+      <BookingModal
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
+      />
     </header>
   );
 };

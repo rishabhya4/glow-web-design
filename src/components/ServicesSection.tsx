@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { 
-  Globe, 
-  Palette, 
-  Smartphone, 
-  TrendingUp, 
-  Search, 
+import {
+  Globe,
+  Palette,
+  Smartphone,
+  TrendingUp,
+  Search,
   Layers,
   ArrowRight,
   Check
@@ -115,7 +115,7 @@ export const ServicesSection = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                 {service.title}
               </h3>
 
@@ -123,8 +123,8 @@ export const ServicesSection = () => {
               <div className="relative">
                 <p
                   className={cn(
-                    "text-muted-foreground leading-relaxed transition-all duration-300",
-                    hoveredId === service.id ? "opacity-0 translate-y-2" : "opacity-100"
+                    "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
+                    hoveredId === service.id ? "opacity-0" : "opacity-100"
                   )}
                 >
                   {service.shortDesc}
@@ -133,14 +133,14 @@ export const ServicesSection = () => {
                 {/* Features List (shown on hover) */}
                 <ul
                   className={cn(
-                    "absolute top-0 left-0 space-y-2 transition-all duration-300",
+                    "absolute top-0 left-0 space-y-2 transition-opacity duration-300",
                     hoveredId === service.id
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 -translate-y-2 pointer-events-none"
+                      ? "opacity-100"
+                      : "opacity-0 pointer-events-none"
                   )}
                 >
                   {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <li key={feature} className="flex items-center gap-2 text-base text-muted-foreground">
                       <Check className="w-4 h-4 text-primary flex-shrink-0" />
                       {feature}
                     </li>
@@ -150,7 +150,7 @@ export const ServicesSection = () => {
 
               {/* Arrow Icon */}
               <div className="mt-6 flex items-center gap-2 text-primary font-medium text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-0 group-hover:translate-x-2">
-                Learn More
+                {/* Learn More */}
                 <ArrowRight className="w-4 h-4" />
               </div>
 

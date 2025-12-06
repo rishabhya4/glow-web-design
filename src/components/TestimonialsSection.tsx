@@ -39,7 +39,7 @@ export const TestimonialsSection = () => {
 
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % testimonials.length);
     }, 5000);
@@ -61,7 +61,7 @@ export const TestimonialsSection = () => {
     <section id="testimonials" className="section-padding relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
-      
+
       <div className="container-custom relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
@@ -90,7 +90,7 @@ export const TestimonialsSection = () => {
                   <p
                     key={testimonial.id}
                     className={cn(
-                      "absolute text-lg md:text-xl text-foreground leading-relaxed transition-all duration-500 px-4",
+                      "absolute text-xl md:text-2xl text-foreground leading-relaxed transition-all duration-500 px-4",
                       index === activeIndex
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4 pointer-events-none"
@@ -129,8 +129,8 @@ export const TestimonialsSection = () => {
                           : "opacity-0 translate-y-2 pointer-events-none"
                       )}
                     >
-                      <div className="font-bold text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="font-bold text-lg text-foreground">{testimonial.author}</div>
+                      <div className="text-base text-muted-foreground">{testimonial.role}</div>
                     </div>
                   ))}
                 </div>

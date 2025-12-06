@@ -61,8 +61,8 @@ export const WhyChooseUsSection = () => {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+                <h3 className="font-bold text-lg text-foreground mb-3">{feature.title}</h3>
+                <p className="text-base text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -75,7 +75,7 @@ export const WhyChooseUsSection = () => {
 
             <div className="glass-card p-10 relative overflow-hidden">
               {/* Grid Pattern */}
-              <div 
+              <div
                 className="absolute inset-0 opacity-[0.02]"
                 style={{
                   backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
@@ -91,7 +91,7 @@ export const WhyChooseUsSection = () => {
                       <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
                         {stat.value}
                       </div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-base text-muted-foreground font-medium">{stat.label}</div>
                     </div>
                   ))}
                 </div>
