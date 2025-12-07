@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import {
   Globe,
   Palette,
@@ -63,6 +65,28 @@ const services = [
   },
 ];
 
+// Animation variants for scroll-triggered effects
+const cardVariants: Variants = {
+  offscreen: {
+    y: 150,
+    opacity: 0,
+    scale: 0.8,
+    rotate: -5,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.5,
+      duration: 1,
+      ease: "easeOut",
+    },
+  },
+};
+
 export const ServicesSection = () => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
@@ -89,9 +113,22 @@ export const ServicesSection = () => {
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={service.id}
               className="group glass-card p-8 relative overflow-hidden hover-lift cursor-pointer"
+              initial="offscreen"
+              whileInView="onscreen"
+              viewport={{ once: false, amount: 0.1 }}
+              variants={{
+                ...cardVariants,
+                onscreen: {
+                  ...cardVariants.onscreen,
+                  transition: {
+                    ...(cardVariants.onscreen as any).transition,
+                    delay: index * 0.15,
+                  },
+                },
+              }}
               onMouseEnter={() => setHoveredId(service.id)}
               onMouseLeave={() => setHoveredId(null)}
             >
@@ -161,7 +198,7 @@ export const ServicesSection = () => {
                   service.color
                 )}
               />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BookingModal } from "@/components/BookingModal";
+import { Sphere3D } from "@/components/Sphere3D";
 
 export const HeroSection = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -10,39 +11,27 @@ export const HeroSection = () => {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
     >
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-      >
-        <source src="/intro.mp4" type="video/mp4" />
-      </video>
+      {/* 3D Rotating Sphere Background */}
+      <Sphere3D />
 
-      {/* Dark Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/50" />
+      {/* Rich Gradient Backgrounds */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20" style={{ zIndex: 2 }} />
+      <div className="absolute inset-0 bg-gradient-to-tl from-cyan-900/15 via-transparent to-purple-800/15" style={{ zIndex: 2 }} />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/10 to-transparent" style={{ zIndex: 2 }} />
+
+      {/* Minimal Overlay for text contrast */}
+      <div className="absolute inset-0 bg-black/5" style={{ zIndex: 2 }} />
 
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 bg-gradient-radial opacity-30" />
+      <div className="absolute inset-0 bg-gradient-radial opacity-30" style={{ zIndex: 3 }} />
 
       {/* Floating Shapes */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-delayed" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float" style={{ zIndex: 4 }} />
+      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float-delayed" style={{ zIndex: 4 }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl animate-pulse-glow" style={{ zIndex: 4 }} />
 
-      {/* Grid Pattern Overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
-                           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
-          backgroundSize: '60px 60px'
-        }}
-      />
-
-      <div className="container-custom relative z-10">
+      {/* Content positioned at bottom */}
+      <div className="container-custom relative absolute bottom-16" style={{ zIndex: 10 }}>
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <h1
@@ -75,7 +64,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style={{ zIndex: 11 }}>
         <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
           <div className="w-1 h-2 rounded-full bg-primary" />
         </div>
