@@ -161,17 +161,17 @@ export const ProjectsSection = () => {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="section-padding bg-card/30">
+    <section id="projects" className="section-padding bg-transparent relative z-20">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
+          <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block drop-shadow-md">
             Our Work
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Featured <span className="text-gradient">Projects</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white drop-shadow-lg">
+            Featured <span className="text-gradient drop-shadow-lg">Projects</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white text-lg opacity-100 visible drop-shadow-md">
             Explore our portfolio of successful projects that have transformed businesses across industries.
           </p>
         </div>
@@ -210,8 +210,11 @@ export const ProjectsSection = () => {
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Permanent dark overlay for text readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* View Button */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
@@ -221,18 +224,18 @@ export const ProjectsSection = () => {
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-6">
+              {/* Content - Position above overlays */}
+              <div className="p-6 relative z-10">
                 {/* Category Badge */}
-                <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-3">
+                <span className="inline-block px-3 py-1 rounded-full bg-primary/30 text-primary text-sm font-medium mb-3 shadow-lg">
                   {project.category}
                 </span>
 
-                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors duration-300 drop-shadow-lg">
                   {project.title}
                 </h3>
 
-                <p className="text-muted-foreground text-base leading-relaxed">
+                <p className="text-gray-200 text-base leading-relaxed drop-shadow-md">
                   {project.description}
                 </p>
               </div>

@@ -105,7 +105,7 @@ export const ServicesSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             What We <span className="text-gradient">Offer</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white text-lg">
             Comprehensive digital solutions tailored to help your business thrive in today's competitive landscape.
           </p>
         </div>
@@ -152,7 +152,7 @@ export const ServicesSection = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300">
                 {service.title}
               </h3>
 
@@ -160,7 +160,7 @@ export const ServicesSection = () => {
               <div className="relative">
                 <p
                   className={cn(
-                    "text-muted-foreground text-base leading-relaxed transition-opacity duration-300",
+                    "text-gray-300 text-base leading-relaxed transition-opacity duration-300",
                     hoveredId === service.id ? "opacity-0" : "opacity-100"
                   )}
                 >
