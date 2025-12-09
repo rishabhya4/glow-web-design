@@ -35,7 +35,7 @@ export const HeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in-up"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 animate-fade-in-up"
           >
             Bringing your
             <br />
@@ -44,7 +44,7 @@ export const HeroSection = () => {
 
           {/* Subheadline */}
           <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 animate-fade-in-up"
+            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6 animate-fade-in-up"
             style={{ animationDelay: "0.1s" }}
           >
             We increase revenue and ensure sustainable long-term growth for

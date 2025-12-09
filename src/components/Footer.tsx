@@ -38,7 +38,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="bg-card/50 border-t border-border">
+    <footer className="bg-transparent border-t border-gray-800 relative z-20">
       {/* Main Footer */}
       <div className="container-custom py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -53,7 +53,7 @@ export const Footer = () => {
               />
             </a>
 
-            <p className="text-muted-foreground text-base leading-relaxed mb-6">
+            <p className="text-gray-300 text-base leading-relaxed mb-6">
               We help businesses increase revenue and ensure sustainable long-term growth through powerful digital solutions.
             </p>
 
@@ -73,13 +73,13 @@ export const Footer = () => {
 
           {/* Quick Links Column */}
           <div>
-            <h4 className="font-bold text-foreground mb-4 text-lg">Quick Links</h4>
+            <h4 className="font-bold text-white mb-4 text-lg">Quick Links</h4>
             <ul className="space-y-3">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-base text-muted-foreground hover:text-primary transition-colors"
+                    className="text-base text-gray-400 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -90,13 +90,13 @@ export const Footer = () => {
 
           {/* Services Column */}
           <div>
-            <h4 className="font-bold text-foreground mb-4 text-lg">Services</h4>
+            <h4 className="font-bold text-white mb-4 text-lg">Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-base text-muted-foreground hover:text-primary transition-colors"
+                    className="text-base text-gray-400 hover:text-primary transition-colors"
                   >
                     {link.label}
                   </a>
@@ -107,12 +107,12 @@ export const Footer = () => {
 
           {/* Contact Us Column */}
           <div>
-            <h4 className="font-bold text-foreground mb-4 text-lg">Contact Us</h4>
+            <h4 className="font-bold text-white mb-4 text-lg">Contact Us</h4>
             <ul className="space-y-4">
               {/* Location */}
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-base text-muted-foreground">
+                <span className="text-base text-gray-400">
                   {contactInfo.location}
                 </span>
               </li>
@@ -125,7 +125,7 @@ export const Footer = () => {
                     <a
                       key={phone}
                       href={`tel:${phone}`}
-                      className="text-base text-muted-foreground hover:text-primary transition-colors"
+                      className="text-base text-gray-400 hover:text-primary transition-colors"
                     >
                       {phone}
                     </a>
@@ -138,7 +138,7 @@ export const Footer = () => {
                 <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <a
                   href={`mailto:${contactInfo.email}`}
-                  className="text-base text-muted-foreground hover:text-primary transition-colors break-all"
+                  className="text-base text-gray-400 hover:text-primary transition-colors break-all"
                 >
                   {contactInfo.email}
                 </a>
@@ -149,16 +149,16 @@ export const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-border">
+      <div className="border-t border-gray-800">
         <div className="container-custom py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-base text-muted-foreground">
+          <p className="text-base text-gray-500">
             © {new Date().getFullYear()} GrowOn. All rights reserved.
           </p>
 
           {/* Back to Top */}
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 text-base text-muted-foreground hover:text-primary transition-colors font-medium"
+            className="flex items-center gap-2 text-base text-gray-400 hover:text-primary transition-colors font-medium"
           >
             Back to top
             <ArrowUp className="w-4 h-4" />

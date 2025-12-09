@@ -41,7 +41,7 @@ export const PricingSection = () => {
     .reduce((acc, s) => acc + s.basePrice, 0);
 
   return (
-    <section id="pricing" className="section-padding bg-card/30 relative overflow-hidden">
+    <section id="pricing" className="section-padding bg-transparent relative z-20 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl" />
 
@@ -51,10 +51,10 @@ export const PricingSection = () => {
           <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
             Pricing
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Calculate Your <span className="text-gradient">Project Cost</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white text-lg">
             Use our interactive calculator to get an estimate for your project. Select services and complexity levels to see pricing.
           </p>
         </div>
@@ -86,16 +86,16 @@ export const PricingSection = () => {
                   {isSelected && <Check className="w-4 h-4 text-primary-foreground" />}
                 </div>
 
-                <h3 className="text-2xl font-bold text-foreground mb-3 pr-8">
+                <h3 className="text-2xl font-bold text-white mb-3 pr-8">
                   {service.name}
                 </h3>
 
-                <p className="text-muted-foreground text-base mb-6 leading-relaxed">
+                <p className="text-gray-300 text-base mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
                 <div className="flex items-baseline gap-2">
-                  <span className="text-muted-foreground text-base">Starting at</span>
+                  <span className="text-gray-400 text-base">Starting at</span>
                   <span className="text-3xl font-bold text-primary">${service.basePrice}</span>
                 </div>
               </div>
@@ -106,11 +106,11 @@ export const PricingSection = () => {
         {/* Estimate Card */}
         <div className="max-w-md mx-auto mt-12">
           <div className="glass-card p-8 text-center">
-            <h3 className="text-xl font-semibold text-muted-foreground mb-3">
+            <h3 className="text-xl font-semibold text-gray-400 mb-3">
               {selectedServices.length > 0 ? "Your Estimate" : "Select services to see your estimate"}
             </h3>
 
-            <div className="text-base text-muted-foreground mb-4 font-medium">Total Estimate</div>
+            <div className="text-base text-gray-400 mb-4 font-medium">Total Estimate</div>
 
             <div className="text-6xl font-bold text-gradient mb-6">
               ${totalEstimate}
@@ -125,7 +125,7 @@ export const PricingSection = () => {
               Request Detailed Quote
             </Button>
 
-            <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
+            <p className="text-sm text-gray-500 mt-4 leading-relaxed">
               This is an estimate. Final pricing may vary based on specific project requirements.
             </p>
           </div>

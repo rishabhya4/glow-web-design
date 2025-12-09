@@ -40,9 +40,9 @@ export const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section-padding relative overflow-hidden">
+    <section id="contact" className="section-padding bg-transparent relative z-20 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-card/50 to-background" />
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-card/50 to-background" /> */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
 
@@ -62,7 +62,7 @@ export const ContactSection = () => {
           <div className="glass-card p-8 md:p-12">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-base font-medium text-foreground mb-2">
+                <label htmlFor="name" className="block text-base font-medium text-white mb-2">
                   Name
                 </label>
                 <Input
@@ -72,12 +72,12 @@ export const ContactSection = () => {
                   onChange={handleChange}
                   placeholder="Your name"
                   required
-                  className="bg-background/50 border-border focus:border-primary h-12"
+                  className="bg-gray-900/50 border-gray-700 focus:border-primary h-12 text-white placeholder:text-gray-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-base font-medium text-foreground mb-2">
+                <label htmlFor="email" className="block text-base font-medium text-white mb-2">
                   Email
                 </label>
                 <Input
@@ -88,12 +88,12 @@ export const ContactSection = () => {
                   onChange={handleChange}
                   placeholder="your@email.com"
                   required
-                  className="bg-background/50 border-border focus:border-primary h-12"
+                  className="bg-gray-900/50 border-gray-700 focus:border-primary h-12 text-white placeholder:text-gray-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="phone" className="block text-base font-medium text-foreground mb-2">
+                <label htmlFor="phone" className="block text-base font-medium text-white mb-2">
                   Phone Number
                 </label>
                 <Input
@@ -103,12 +103,12 @@ export const ContactSection = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+1 (555) 000-0000"
-                  className="bg-background/50 border-border focus:border-primary h-12"
+                  className="bg-gray-900/50 border-gray-700 focus:border-primary h-12 text-white placeholder:text-gray-500"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-base font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-base font-medium text-white mb-2">
                   Message
                 </label>
                 <Textarea
@@ -119,7 +119,7 @@ export const ContactSection = () => {
                   placeholder="Tell us about your project..."
                   rows={5}
                   required
-                  className="bg-background/50 border-border focus:border-primary resize-none"
+                  className="bg-gray-900/50 border-gray-700 focus:border-primary resize-none text-white placeholder:text-gray-500"
                 />
               </div>
 

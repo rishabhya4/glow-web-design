@@ -5,31 +5,31 @@ import { cn } from "@/lib/utils";
 const testimonials = [
   {
     id: 1,
-    content: "CareChain AI transformed our healthcare operations. GrowOn's system enhanced patient care while cutting admin work by 40%. AI predictive analytics cut medication errors 28% and boosted bed efficiency 35%. A true healthcare transformation.",
-    author: "Parikshit Pandey",
-    role: "Founder",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    content: "The new responsive website for TejBharat Network has completely revitalized our online presence. Our client engagement has increased by 40% thanks to the intuitive navigation and professional design.",
+    author: "Rajesh Kumar",
+    role: "Director, TejBharat Network",
+    avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
   },
   {
     id: 2,
-    content: "GrowOn's brand logo perfectly captured our identity. The bold design drove a 25% social media boost and instant recognition. More than a symbol – it's become our strategic advantage.",
-    author: "TCET TSDW",
-    role: "College Committee",
-    avatar: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=150&h=150&fit=crop&crop=face",
+    content: "GrowOn built a fantastic e-commerce platform for Wibelly. The seamless shopping experience and modern UI have directly contributed to a significant boost in our sales and customer retention.",
+    author: "Priya Sharma",
+    role: "Founder, Wibelly",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
   },
   {
     id: 3,
-    content: "The interactive features GrowOn implemented on our website have revolutionized how we showcase our luxury properties. The attention to user experience details has made a significant impact on our client engagement.",
-    author: "Robert Williams",
-    role: "Principal Broker, Luxury Homes Realty",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+    content: "Our creative portfolio at AdFilm Works Media has never looked better. The dynamic website perfectly showcases our video productions and helps us close more high-value contracts.",
+    author: "Amit Desai",
+    role: "Creative Head, AdFilm Works Media",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
   },
   {
     id: 4,
-    content: "GrowOn delivered a website that perfectly aligns with our brand values while providing the technical functionality we needed. Their team was responsive, creative, and truly invested in our success.",
-    author: "Sarah Thompson",
-    role: "COO, Global Finance",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+    content: "The Chai Cafe app beautifully captures the essence of our brand. Customers love the ordering experience, and it has streamlined our operations tremendously.",
+    author: "Anjali Patel",
+    role: "Owner, Chai Cafe",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
   },
 ];
 
@@ -59,8 +59,8 @@ export const TestimonialsSection = () => {
 
   return (
     <section id="testimonials" className="section-padding relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" />
+      {/* Background - Removed for transparency */}
+      {/* <div className="absolute inset-0 bg-gradient-to-b from-background via-card/50 to-background" /> */}
 
       <div className="container-custom relative z-10">
         {/* Section Header */}
@@ -68,10 +68,10 @@ export const TestimonialsSection = () => {
           <span className="text-primary text-sm font-semibold uppercase tracking-widest mb-4 block">
             Our Clients
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
             Trusted by <span className="text-gradient">Leading Brands</span>
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-white text-lg">
             We've partnered with innovative companies across various industries to deliver exceptional results.
           </p>
         </div>
